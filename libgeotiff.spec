@@ -6,6 +6,7 @@ Release:	1
 License:	MIT, partially Public Domain (see LICENSE)
 Group:		Libraries
 Source0:	ftp://ftp.remotesensing.org/pub/geotiff/libgeotiff/%{name}-%{version}.tar.gz
+# Source0-md5:	23189c862ab2f073da8fd080be21dcd9
 Patch0:		%{name}-shared-fix.patch
 URL:		http://www.remotesensing.org/geotiff/geotiff.html
 BuildRequires:	libjpeg-devel
