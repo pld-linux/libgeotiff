@@ -1,12 +1,12 @@
 Summary:	GeoTIFF library
 Summary(pl):	Biblioteka GeoTIFF
 Name:		libgeotiff
-Version:	1.2.1
+Version:	1.2.2
 Release:	1
 License:	MIT, partially Public Domain (see LICENSE)
 Group:		Libraries
 Source0:	ftp://ftp.remotesensing.org/pub/geotiff/libgeotiff/%{name}-%{version}.tar.gz
-# Source0-md5:	cd02f28915f964e4aa914e0e1b39ab4b
+# Source0-md5:	6e6bb47b6283dc63b83dcb5962e0f70a
 Patch0:		%{name}-shared-fix.patch
 URL:		http://www.remotesensing.org/geotiff/geotiff.html
 BuildRequires:	automake
@@ -30,8 +30,8 @@ plikach.
 Summary:	GeoTIFF header files
 Summary(pl):	Pliki nag³ówkowe GeoTIFF
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
-Requires:	libtiff-devel
+Requires:	%{name} = %{version}-%{release}
+Requires:	libtiff-devel >= 3.6.0
 
 %description devel
 Header files for GeoTIFF library.
@@ -43,7 +43,7 @@ Pliki nag³ówkowe biblioteki GeoTIFF.
 Summary:	GeoTIFF static library
 Summary(pl):	Statyczna biblioteka GeoTIFF
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 GeoTIFF static library.
@@ -57,7 +57,7 @@ Statyczna biblioteka GeoTIFF.
 
 %build
 cp -f /usr/share/automake/config.* .
-%configure2_13
+%configure
 
 %{__make}
 
