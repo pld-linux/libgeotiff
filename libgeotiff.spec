@@ -3,7 +3,7 @@ Summary(pl):	Biblioteka GeoTIFF
 Name:		libgeotiff
 Version:	1.1.4
 Release:	1
-License:	MIT, partially public domain (see LICENSE)
+License:	MIT, partially Public Domain (see LICENSE)
 Group:		Libraries
 Source0:	ftp://ftp.remotesensing.org/pub/geotiff/libgeotiff/%{name}-%{version}.tar.gz
 Patch0:		%{name}-DESTDIR.patch
