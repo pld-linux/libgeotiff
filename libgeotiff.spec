@@ -51,7 +51,7 @@ GeoTIFF static library.
 Statyczna biblioteka GeoTIFF.
 
 %prep
-%setup -q 
+%setup -q
 %patch0 -p1
 
 %build
