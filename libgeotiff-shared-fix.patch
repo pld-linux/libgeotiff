@@ -1,106 +1,21 @@
---- libgeotiff-1.1.4/Makefile.in.orig	Mon Jun 17 23:58:01 2002
-+++ libgeotiff-1.1.4/Makefile.in	Tue Jun 18 00:06:36 2002
-@@ -10,6 +10,7 @@
- NULL    =
- CD      = cd
- CC      = @CC@
-+C_PIC	= @C_PIC@
- AR      = ar
- LN      = @LN_S@
- AROPTS  = r
-@@ -108,7 +108,7 @@
+--- libgeotiff-1.2.0/Makefile.in.orig	Wed Jun 19 05:52:12 2002
++++ libgeotiff-1.2.0/Makefile.in	Sun Jan 19 01:14:01 2003
+@@ -50,8 +50,7 @@
+ #
+ IPATH   = -I. -I${SRCDIR} @TIFF_INC@ @PROJ_INC@
+ #
+-CONF_LIBRARY=\
+-	${NULL}
++CONF_LIBRARY=@C_PIC@
+ COPTS	= @CFLAGS@ -DCSV_DATA_DIR=\"$(datadir)\"
+ CFLAGS  = ${COPTS} ${IPATH} ${CONF_LIBRARY}
+ #
+@@ -111,7 +110,7 @@
  	${RANLIB} libgeotiff.a
  
- libgeotiff.so.$(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_POINT): ${OBJS}
+ $(GEOTIFF_SO): ${OBJS}
 -	${LD_SHARED} ${OBJS} ${LIBS} -o $(GEOTIFF_SO)
-+	${LD_SHARED} ${OBJS} ${LIBS} -o $(GEOTIFF_SO) -soname libgeotiff.so.$(VERSION_MAJOR)
++	${CC} -shared ${OBJS} ${LIBS} -o $(GEOTIFF_SO) -Wl,-soname=libgeotiff.so.$(VERSION_MAJOR)
  	rm -f libgeotiff.so
  	${LN} $(GEOTIFF_SO) libgeotiff.so
- 
-@@ -123,52 +124,52 @@
- 	${LN} ${LIB_XTIFF}/*.h .
- 
- ${XTIFF}: ${LIB_XTIFF}/xtiff.c  ${XTIFFINC}
--	${CC} -c ${CFLAGS}  ${LIB_XTIFF}/xtiff.c
-+	${CC} -c ${CFLAGS} $(C_PIC) ${LIB_XTIFF}/xtiff.c
- 
- geo_free.o: ${SRCDIR}/geo_free.c
--	${CC} -c ${CFLAGS} ${SRCDIR}/geo_free.c
-+	${CC} -c ${CFLAGS} $(C_PIC) ${SRCDIR}/geo_free.c
- 
- geo_get.o: ${SRCDIR}/geo_get.c
--	${CC} -c ${CFLAGS} ${SRCDIR}/geo_get.c
-+	${CC} -c ${CFLAGS} $(C_PIC) ${SRCDIR}/geo_get.c
- 
- geo_names.o: ${SRCDIR}/geo_names.c
--	${CC} -c ${CFLAGS} ${SRCDIR}/geo_names.c
-+	${CC} -c ${CFLAGS} $(C_PIC) ${SRCDIR}/geo_names.c
- 
- geo_new.o: ${SRCDIR}/geo_new.c
--	${CC} -c ${CFLAGS} ${SRCDIR}/geo_new.c
-+	${CC} -c ${CFLAGS} $(C_PIC) ${SRCDIR}/geo_new.c
- 
- geo_print.o: ${SRCDIR}/geo_print.c
--	${CC} -c ${CFLAGS} ${SRCDIR}/geo_print.c
-+	${CC} -c ${CFLAGS} $(C_PIC) ${SRCDIR}/geo_print.c
- 
- geo_set.o: ${SRCDIR}/geo_set.c
--	${CC} -c ${CFLAGS} ${SRCDIR}/geo_set.c
-+	${CC} -c ${CFLAGS} $(C_PIC) ${SRCDIR}/geo_set.c
- 
- geo_tiffp.o: ${SRCDIR}/geo_tiffp.c
--	${CC} -c ${CFLAGS} ${SRCDIR}/geo_tiffp.c
-+	${CC} -c ${CFLAGS} $(C_PIC) ${SRCDIR}/geo_tiffp.c
- 
- geo_write.o: ${SRCDIR}/geo_write.c
--	${CC} -c ${CFLAGS} ${SRCDIR}/geo_write.c
-+	${CC} -c ${CFLAGS} $(C_PIC) ${SRCDIR}/geo_write.c
- 
- geo_trans.o: ${SRCDIR}/geo_trans.c
--	${CC} -c ${CFLAGS} ${SRCDIR}/geo_trans.c
-+	${CC} -c ${CFLAGS} $(C_PIC) ${SRCDIR}/geo_trans.c
- 
- geo_normalize.o: ${SRCDIR}/geo_normalize.c
--	${CC} -c ${CFLAGS} ${SRCDIR}/geo_normalize.c
-+	${CC} -c ${CFLAGS} $(C_PIC) ${SRCDIR}/geo_normalize.c
- 
- geo_extra.o: ${SRCDIR}/geo_extra.c
--	${CC} -c ${CFLAGS} ${SRCDIR}/geo_extra.c
-+	${CC} -c ${CFLAGS} $(C_PIC) ${SRCDIR}/geo_extra.c
- 
- cpl_csv.o: ${SRCDIR}/cpl_csv.c
--	${CC} -c ${CFLAGS} ${SRCDIR}/cpl_csv.c
-+	${CC} -c ${CFLAGS} $(C_PIC) ${SRCDIR}/cpl_csv.c
- 
- cpl_serv.o: ${SRCDIR}/cpl_serv.c
--	${CC} -c ${CFLAGS} ${SRCDIR}/cpl_serv.c
-+	${CC} -c ${CFLAGS} $(C_PIC) ${SRCDIR}/cpl_serv.c
- 
- geotiff_proj4.o: ${SRCDIR}/geotiff_proj4.c
--	${CC} -c ${CFLAGS} ${SRCDIR}/geotiff_proj4.c
-+	${CC} -c ${CFLAGS} $(C_PIC) ${SRCDIR}/geotiff_proj4.c
- 
- ${SRCDIR}/csv/%.o:	${SRCDIR}/csv/%.c
--	${CC} -c ${CFLAGS} ${SRCDIR}/csv/$*.c -o ${SRCDIR}/csv/$*.o
-+	${CC} -c ${CFLAGS} $(C_PIC) ${SRCDIR}/csv/$*.c -o ${SRCDIR}/csv/$*.o
- 
- clean:
- 	rm -f ${TARGETS} ${OBJS} ${XTIFFINC} core a.out
-@@ -204,14 +204,10 @@
- 	$(INSTALL) bin/listgeo bin/geotifcp $(DESTDIR)$(bindir)
- 	if test ! -z "$(GEOTIFF_SO)" ; then \
- 	   $(INSTALL) $(GEOTIFF_SO) $(DESTDIR)${libdir}; \
--	   rm -f $(DESTDIR)${libdir}/libgeotiff.so.$(VERSION_MAJOR).$(VERSION_MINOR); \
--	   ${LN} ${libdir}/$(GEOTIFF_SO) $(DESTDIR)${libdir}/libgeotiff.so.$(VERSION_MAJOR).$(VERSION_MINOR); \
--	   rm -f $(DESTDIR)${libdir}/libgeotiff.so.$(VERSION_MAJOR); \
--	   ${LN} ${libdir}/libgeotiff.so.$(VERSION_MAJOR).$(VERSION_MINOR) \
--		$(DESTDIR)${libdir}/libgeotiff.so.$(VERSION_MAJOR); \
-+	   rm -f $(DESTDIR)${libdir}/libgeotiff.so.$(VERSION_MAJOR) \
-+	   ${LN} ${libdir}/$(GEOTIFF_SO) $(DESTDIR)${libdir}/libgeotiff.so.$(VERSION_MAJOR) \
- 	   rm -f $(DESTDIR)${libdir}/libgeotiff.so; \
--	   ${LN} ${libdir}/libgeotiff.so.$(VERSION_MAJOR) \
--		$(DESTDIR)${libdir}/libgeotiff.so; \
-+	   ${LN} ${libdir}/$(GEOTIFF_SO) $(DESTDIR)${libdir}/libgeotiff.so; \
- 	fi
- 
  

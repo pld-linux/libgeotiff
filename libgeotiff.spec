@@ -1,16 +1,15 @@
 Summary:	GeoTIFF library
 Summary(pl):	Biblioteka GeoTIFF
 Name:		libgeotiff
-Version:	1.1.4
+Version:	1.2.0
 Release:	1
 License:	MIT, partially Public Domain (see LICENSE)
 Group:		Libraries
 Source0:	ftp://ftp.remotesensing.org/pub/geotiff/libgeotiff/%{name}-%{version}.tar.gz
-Patch0:		%{name}-DESTDIR.patch
-Patch1:		%{name}-shared-fix.patch
+Patch0:		%{name}-shared-fix.patch
 URL:		http://www.remotesensing.org/geotiff/geotiff.html
 BuildRequires:	libjpeg-devel
-BuildRequires:	libtiff-devel
+BuildRequires:	libtiff-devel >= 3.6.0
 BuildRequires:	proj-devel
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -53,7 +52,6 @@ Statyczna biblioteka GeoTIFF.
 %prep
 %setup -q 
 %patch0 -p1
-%patch1 -p1
 
 %build
 %configure2_13
@@ -73,7 +71,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog LICENSE README docs/*
+%doc ChangeLog LICENSE README docs/*.{html,dox,txt}
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %{_datadir}/epsg_csv
