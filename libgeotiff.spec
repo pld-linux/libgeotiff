@@ -9,6 +9,7 @@ Source0:	ftp://ftp.remotesensing.org/pub/geotiff/libgeotiff/%{name}-%{version}.t
 # Source0-md5:	cd02f28915f964e4aa914e0e1b39ab4b
 Patch0:		%{name}-shared-fix.patch
 URL:		http://www.remotesensing.org/geotiff/geotiff.html
+BuildRequires:	automake
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtiff-devel >= 3.6.0
 BuildRequires:	proj-devel
@@ -55,6 +56,7 @@ Statyczna biblioteka GeoTIFF.
 %patch0 -p1
 
 %build
+cp -f /usr/share/automake/config.* .
 %configure2_13
 
 %{__make}
@@ -62,7 +64,8 @@ Statyczna biblioteka GeoTIFF.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
