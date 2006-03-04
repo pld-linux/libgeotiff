@@ -1,16 +1,6 @@
 --- libgeotiff-1.2.3/Makefile.in.orig	2005-08-16 17:21:20.000000000 +0200
 +++ libgeotiff-1.2.3/Makefile.in	2006-03-04 23:07:56.028526750 +0100
-@@ -51,8 +51,7 @@
- #
- IPATH   = -I. -I${SRCDIR} @TIFF_INC@ @PROJ_INC@
- #
--CONF_LIBRARY=\
--	${NULL}
-+CONF_LIBRARY=@C_PIC@
- COPTS	= @CFLAGS@ @C_PIC@ -DCSV_DATA_DIR=\"$(datadir)\"
- CFLAGS  = ${COPTS} ${IPATH} ${CONF_LIBRARY}
- #
-@@ -100,7 +99,7 @@
+@@ -100,7 +100,7 @@
  	${RANLIB} libgeotiff.a
  
  $(GEOTIFF_SO): ${OBJS}
