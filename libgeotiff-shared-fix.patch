@@ -1,21 +1,21 @@
---- libgeotiff-1.2.0/Makefile.in.orig	Wed Jun 19 05:52:12 2002
-+++ libgeotiff-1.2.0/Makefile.in	Sun Jan 19 01:14:01 2003
-@@ -50,8 +50,7 @@
+--- libgeotiff-1.2.3/Makefile.in.orig	2005-08-16 17:21:20.000000000 +0200
++++ libgeotiff-1.2.3/Makefile.in	2006-03-04 23:07:56.028526750 +0100
+@@ -51,8 +51,7 @@
  #
  IPATH   = -I. -I${SRCDIR} @TIFF_INC@ @PROJ_INC@
  #
 -CONF_LIBRARY=\
 -	${NULL}
 +CONF_LIBRARY=@C_PIC@
- COPTS	= @CFLAGS@ -DCSV_DATA_DIR=\"$(datadir)\"
+ COPTS	= @CFLAGS@ @C_PIC@ -DCSV_DATA_DIR=\"$(datadir)\"
  CFLAGS  = ${COPTS} ${IPATH} ${CONF_LIBRARY}
  #
-@@ -111,7 +110,7 @@
+@@ -100,7 +99,7 @@
  	${RANLIB} libgeotiff.a
  
  $(GEOTIFF_SO): ${OBJS}
 -	${LD_SHARED} ${OBJS} ${LIBS} -o $(GEOTIFF_SO)
 +	${CC} -shared ${OBJS} ${LIBS} -o $(GEOTIFF_SO) -Wl,-soname=libgeotiff.so.$(VERSION_MAJOR)
- 	rm -f libgeotiff.so
- 	${LN} $(GEOTIFF_SO) libgeotiff.so
+ 	rm -f libgeotiff.$(SO_EXT)
+ 	${LN} $(GEOTIFF_SO) libgeotiff.$(SO_EXT)
  
