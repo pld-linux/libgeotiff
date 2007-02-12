@@ -1,5 +1,5 @@
 Summary:	GeoTIFF library
-Summary(pl):	Biblioteka GeoTIFF
+Summary(pl.UTF-8):   Biblioteka GeoTIFF
 Name:		libgeotiff
 Version:	1.2.3
 Release:	1
@@ -21,14 +21,14 @@ This library is designed to permit the extraction and parsing of the
 "GeoTIFF" Key directories, as well as definition and installation of
 GeoTIFF keys in new files.
 
-%description -l pl
-Ta biblioteka pozwala na odczytywanie i analizowanie znacznik體
-"GeoTIFF", a tak縠 definiowanie i zapisywanie znacznik體 w nowych
+%description -l pl.UTF-8
+Ta biblioteka pozwala na odczytywanie i analizowanie znacznik贸w
+"GeoTIFF", a tak偶e definiowanie i zapisywanie znacznik贸w w nowych
 plikach.
 
 %package devel
 Summary:	GeoTIFF header files
-Summary(pl):	Pliki nag丑wkowe GeoTIFF
+Summary(pl.UTF-8):   Pliki nag艂贸wkowe GeoTIFF
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	libtiff-devel >= 3.6.0
@@ -36,19 +36,19 @@ Requires:	libtiff-devel >= 3.6.0
 %description devel
 Header files for GeoTIFF library.
 
-%description devel -l pl
-Pliki nag丑wkowe biblioteki GeoTIFF.
+%description devel -l pl.UTF-8
+Pliki nag艂贸wkowe biblioteki GeoTIFF.
 
 %package static
 Summary:	GeoTIFF static library
-Summary(pl):	Statyczna biblioteka GeoTIFF
+Summary(pl.UTF-8):   Statyczna biblioteka GeoTIFF
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 GeoTIFF static library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka GeoTIFF.
 
 %prep
