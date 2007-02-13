@@ -1,5 +1,5 @@
 Summary:	GeoTIFF library
-Summary(pl.UTF-8):   Biblioteka GeoTIFF
+Summary(pl.UTF-8):	Biblioteka GeoTIFF
 Name:		libgeotiff
 Version:	1.2.3
 Release:	1
@@ -28,7 +28,7 @@ plikach.
 
 %package devel
 Summary:	GeoTIFF header files
-Summary(pl.UTF-8):   Pliki nagłówkowe GeoTIFF
+Summary(pl.UTF-8):	Pliki nagłówkowe GeoTIFF
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	libtiff-devel >= 3.6.0
@@ -41,7 +41,7 @@ Pliki nagłówkowe biblioteki GeoTIFF.
 
 %package static
 Summary:	GeoTIFF static library
-Summary(pl.UTF-8):   Statyczna biblioteka GeoTIFF
+Summary(pl.UTF-8):	Statyczna biblioteka GeoTIFF
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
