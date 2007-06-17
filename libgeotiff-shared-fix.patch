@@ -5,7 +5,7 @@
  
  $(GEOTIFF_SO): ${OBJS}
 -	${LD_SHARED} ${OBJS} ${LIBS} -o $(GEOTIFF_SO)
-+	${CC} -shared ${OBJS} ${LIBS} -o $(GEOTIFF_SO) -Wl,-soname=libgeotiff.so.$(VERSION_MAJOR).$(VERSION_MINOR)
++	${CC} -shared ${OBJS} ${LIBS} -o $(GEOTIFF_SO) -Wl,-soname=libgeotiff.so.$(VERSION_MAJOR)
  	rm -f libgeotiff.$(SO_EXT)
  	${LN} $(GEOTIFF_SO) libgeotiff.$(SO_EXT)
  
