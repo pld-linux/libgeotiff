@@ -80,14 +80,15 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog LICENSE README docs/*.{html,dox,txt}
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/lib*.so.*
+%attr(755,root,root) %{_libdir}/libgeotiff.so.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgeotiff.so.1
 %{_datadir}/epsg_csv
 
 %files devel
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libgeotiff.so
 %{_includedir}/*
-%attr(755,root,root) %{_libdir}/lib*.so
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libgeotiff.a
