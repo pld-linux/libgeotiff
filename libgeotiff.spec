@@ -1,13 +1,14 @@
 Summary:	GeoTIFF library
 Summary(pl.UTF-8):	Biblioteka GeoTIFF
 Name:		libgeotiff
-Version:	1.2.4
+Version:	1.2.5
 Release:	1
 License:	MIT, partially Public Domain (see LICENSE)
 Group:		Libraries
 Source0:	ftp://ftp.remotesensing.org/geotiff/libgeotiff/%{name}-%{version}.tar.gz
-# Source0-md5:	62cd4a515d1f3ba7b41cb4ed9061aa76
+# Source0-md5:	000f247a88510f1b38d4b314d1e47048
 Patch0:		%{name}-shared-fix.patch
+Patch1:		%{name}-link.patch
 URL:		http://www.remotesensing.org/geotiff/geotiff.html
 BuildRequires:	automake
 BuildRequires:	libjpeg-devel
@@ -54,6 +55,7 @@ Statyczna biblioteka GeoTIFF.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 # workaround not to rebuild configure on make
 touch configure
@@ -79,7 +81,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog LICENSE README docs/*.{html,dox,txt}
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/geotifcp
+%attr(755,root,root) %{_bindir}/listgeo
 %attr(755,root,root) %{_libdir}/libgeotiff.so.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgeotiff.so.1
 %{_datadir}/epsg_csv
@@ -87,7 +90,17 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgeotiff.so
-%{_includedir}/*
+%{_includedir}/cpl_serv.h
+%{_includedir}/geo_*.h
+%{_includedir}/geokeys.h
+%{_includedir}/geonames.h
+%{_includedir}/geotiff.h
+%{_includedir}/geotiffio.h
+%{_includedir}/geovalues.h
+%{_includedir}/xtiffio.h
+%{_includedir}/epsg_*.inc
+%{_includedir}/geo_ctrans.inc
+%{_includedir}/geokeys.inc
 
 %files static
 %defattr(644,root,root,755)
