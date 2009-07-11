@@ -2,7 +2,7 @@ Summary:	GeoTIFF library
 Summary(pl.UTF-8):	Biblioteka GeoTIFF
 Name:		libgeotiff
 Version:	1.2.5
-Release:	1
+Release:	2
 License:	MIT, partially Public Domain (see LICENSE)
 Group:		Libraries
 Source0:	ftp://ftp.remotesensing.org/geotiff/libgeotiff/%{name}-%{version}.tar.gz
