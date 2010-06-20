@@ -1,18 +1,19 @@
 Summary:	GeoTIFF library
 Summary(pl.UTF-8):	Biblioteka GeoTIFF
 Name:		libgeotiff
-Version:	1.2.5
-Release:	3
+Version:	1.3.0
+Release:	1
 License:	MIT, partially Public Domain (see LICENSE)
 Group:		Libraries
 Source0:	ftp://ftp.remotesensing.org/geotiff/libgeotiff/%{name}-%{version}.tar.gz
-# Source0-md5:	000f247a88510f1b38d4b314d1e47048
-Patch0:		%{name}-shared-fix.patch
-Patch1:		%{name}-link.patch
+# Source0-md5:	6ac3c22e44711e9a3add9044e40b9527
+Patch0:		%{name}-opt.patch
 URL:		http://www.remotesensing.org/geotiff/geotiff.html
+BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtiff-devel >= 3.6.0
+BuildRequires:	libtool
 BuildRequires:	proj-devel
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -55,14 +56,16 @@ Statyczna biblioteka GeoTIFF.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-
-# workaround not to rebuild configure on make
-touch configure
 
 %build
-cp -f /usr/share/automake/config.* .
-%configure
+%{__libtoolize}
+%{__aclocal} -I m4
+%{__autoconf}
+%{__autoheader}
+%{__automake}
+%configure \
+	--with-jpeg \
+	--with-zip
 
 %{__make}
 
@@ -80,16 +83,20 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog LICENSE README docs/*.{html,dox,txt}
+%doc ChangeLog LICENSE README
+%attr(755,root,root) %{_bindir}/applygeo
+%attr(755,root,root) %{_bindir}/csv2html
 %attr(755,root,root) %{_bindir}/geotifcp
 %attr(755,root,root) %{_bindir}/listgeo
-%attr(755,root,root) %{_libdir}/libgeotiff.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgeotiff.so.1
+%attr(755,root,root) %{_bindir}/makegeo
+%attr(755,root,root) %{_libdir}/libgeotiff.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgeotiff.so.2
 %{_datadir}/epsg_csv
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgeotiff.so
+%{_libdir}/libgeotiff.la
 %{_includedir}/cpl_serv.h
 %{_includedir}/geo_*.h
 %{_includedir}/geokeys.h

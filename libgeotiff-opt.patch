@@ -1,0 +1,13 @@
+--- libgeotiff-1.3.0/configure.ac.orig	2009-11-02 16:37:11.000000000 +0100
++++ libgeotiff-1.3.0/configure.ac	2010-06-20 09:54:26.607446450 +0200
+@@ -84,8 +84,8 @@
+     CXXFLAGS="$CXXFLAGS -g -DDEBUG -Wall -Wno-long-long -pedantic -std=c++98"
+     AC_MSG_RESULT(yes)
+ else
+-    CFLAGS="$CFLAGS -O3 -DNDEBUG"
+-    CXXFLAGS="$CXXFLAGS -O3 -DNDEBUG"
++    CFLAGS="$CFLAGS -DNDEBUG"
++    CXXFLAGS="$CXXFLAGS -DNDEBUG"
+     AC_MSG_RESULT(no)
+ fi
+ 
