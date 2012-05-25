@@ -1,12 +1,12 @@
 Summary:	GeoTIFF library
 Summary(pl.UTF-8):	Biblioteka GeoTIFF
 Name:		libgeotiff
-Version:	1.3.0
-Release:	3
+Version:	1.4.0
+Release:	1
 License:	MIT, partially Public Domain (see LICENSE)
 Group:		Libraries
 Source0:	ftp://ftp.remotesensing.org/geotiff/libgeotiff/%{name}-%{version}.tar.gz
-# Source0-md5:	6ac3c22e44711e9a3add9044e40b9527
+# Source0-md5:	efa7b418bc00228fcda4da63557e40c2
 Patch0:		%{name}-opt.patch
 URL:		http://www.remotesensing.org/geotiff/geotiff.html
 BuildRequires:	autoconf >= 2.59
@@ -61,7 +61,6 @@ Statyczna biblioteka GeoTIFF.
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
-%{__autoheader}
 %{__automake}
 %configure \
 	--with-jpeg \
@@ -85,13 +84,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog LICENSE README
 %attr(755,root,root) %{_bindir}/applygeo
-%attr(755,root,root) %{_bindir}/csv2html
 %attr(755,root,root) %{_bindir}/geotifcp
 %attr(755,root,root) %{_bindir}/listgeo
 %attr(755,root,root) %{_bindir}/makegeo
 %attr(755,root,root) %{_libdir}/libgeotiff.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgeotiff.so.2
 %{_datadir}/epsg_csv
+%{_mandir}/man1/listgeo.1*
 
 %files devel
 %defattr(644,root,root,755)
