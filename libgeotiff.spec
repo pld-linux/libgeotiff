@@ -1,14 +1,14 @@
 Summary:	GeoTIFF library
 Summary(pl.UTF-8):	Biblioteka GeoTIFF
 Name:		libgeotiff
-Version:	1.4.0
+Version:	1.4.1
 Release:	1
 License:	MIT, partially Public Domain (see LICENSE)
 Group:		Libraries
-Source0:	ftp://ftp.remotesensing.org/geotiff/libgeotiff/%{name}-%{version}.tar.gz
-# Source0-md5:	efa7b418bc00228fcda4da63557e40c2
+Source0:	http://download.osgeo.org/geotiff/libgeotiff/%{name}-%{version}.tar.gz
+# Source0-md5:	48bdf817e6e7a37671cc1f41b01e10fc
 Patch0:		%{name}-opt.patch
-URL:		http://www.remotesensing.org/geotiff/geotiff.html
+URL:		http://geotiff.osgeo.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
 BuildRequires:	libjpeg-devel
