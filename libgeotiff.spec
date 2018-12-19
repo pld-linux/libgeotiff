@@ -1,12 +1,12 @@
 Summary:	GeoTIFF library
 Summary(pl.UTF-8):	Biblioteka GeoTIFF
 Name:		libgeotiff
-Version:	1.4.2
-Release:	3
+Version:	1.4.3
+Release:	1
 License:	MIT, partially Public Domain (see LICENSE)
 Group:		Libraries
 Source0:	http://download.osgeo.org/geotiff/libgeotiff/%{name}-%{version}.tar.gz
-# Source0-md5:	96ab80e0d4eff7820579957245d844f8
+# Source0-md5:	234bd119b1f2334d44a0ceb0a8e66496
 Patch0:		%{name}-opt.patch
 URL:		http://geotiff.osgeo.org/
 BuildRequires:	autoconf >= 2.59
