@@ -1,12 +1,12 @@
 Summary:	GeoTIFF library
 Summary(pl.UTF-8):	Biblioteka GeoTIFF
 Name:		libgeotiff
-Version:	1.4.3
+Version:	1.5.1
 Release:	1
 License:	MIT, partially Public Domain (see LICENSE)
 Group:		Libraries
 Source0:	http://download.osgeo.org/geotiff/libgeotiff/%{name}-%{version}.tar.gz
-# Source0-md5:	234bd119b1f2334d44a0ceb0a8e66496
+# Source0-md5:	6d0fa650c206791bc7d5e60ef625ea77
 Patch0:		%{name}-opt.patch
 URL:		http://geotiff.osgeo.org/
 BuildRequires:	autoconf >= 2.59
@@ -14,7 +14,7 @@ BuildRequires:	automake
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtiff-devel >= 3.6.0
 BuildRequires:	libtool
-BuildRequires:	proj-devel
+BuildRequires:	proj-devel >= 6.0.0
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -87,8 +87,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/geotifcp
 %attr(755,root,root) %{_bindir}/listgeo
 %attr(755,root,root) %{_libdir}/libgeotiff.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgeotiff.so.2
-%{_datadir}/epsg_csv
+%attr(755,root,root) %ghost %{_libdir}/libgeotiff.so.5
 %{_mandir}/man1/applygeo.1*
 %{_mandir}/man1/geotifcp.1*
 %{_mandir}/man1/listgeo.1*
