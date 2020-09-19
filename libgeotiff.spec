@@ -1,12 +1,12 @@
 Summary:	GeoTIFF library
 Summary(pl.UTF-8):	Biblioteka GeoTIFF
 Name:		libgeotiff
-Version:	1.5.1
-Release:	2
+Version:	1.6.0
+Release:	1
 License:	MIT, partially Public Domain (see LICENSE)
 Group:		Libraries
 Source0:	http://download.osgeo.org/geotiff/libgeotiff/%{name}-%{version}.tar.gz
-# Source0-md5:	6d0fa650c206791bc7d5e60ef625ea77
+# Source0-md5:	4e224618aeb15a33f2d88ae5d2f911df
 Patch0:		%{name}-opt.patch
 URL:		http://geotiff.osgeo.org/
 BuildRequires:	autoconf >= 2.59
@@ -14,6 +14,7 @@ BuildRequires:	automake
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtiff-devel >= 3.6.0
 BuildRequires:	libtool
+BuildRequires:	pkgconfig
 BuildRequires:	proj-devel >= 6.0.0
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -106,7 +107,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/xtiffio.h
 %{_includedir}/epsg_*.inc
 %{_includedir}/geo_ctrans.inc
-%{_includedir}/geokeys.inc
+%{_includedir}/geokeys*.inc
 
 %files static
 %defattr(644,root,root,755)
