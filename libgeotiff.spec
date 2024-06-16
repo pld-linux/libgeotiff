@@ -1,12 +1,12 @@
 Summary:	GeoTIFF library
 Summary(pl.UTF-8):	Biblioteka GeoTIFF
 Name:		libgeotiff
-Version:	1.7.1
+Version:	1.7.3
 Release:	1
 License:	MIT, partially Public Domain (see LICENSE)
 Group:		Libraries
 Source0:	http://download.osgeo.org/geotiff/libgeotiff/%{name}-%{version}.tar.gz
-# Source0-md5:	22879ac6f83460605f9c39147a2ccc7a
+# Source0-md5:	cdca346d3b01d40418f4894c4beef8e9
 Patch0:		%{name}-opt.patch
 URL:		http://geotiff.osgeo.org/
 BuildRequires:	autoconf >= 2.59
@@ -35,6 +35,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe GeoTIFF
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	libtiff-devel >= 3.6.0
+Requires:	proj-devel >= 6.0.0
 
 %description devel
 Header files for GeoTIFF library.
@@ -75,6 +76,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+# obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libgeotiff.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -96,7 +100,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgeotiff.so
-%{_libdir}/libgeotiff.la
 %{_includedir}/cpl_serv.h
 %{_includedir}/geo_*.h
 %{_includedir}/geokeys.h
@@ -108,6 +111,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/epsg_*.inc
 %{_includedir}/geo_ctrans.inc
 %{_includedir}/geokeys*.inc
+%{_pkgconfigdir}/libgeotiff.pc
 
 %files static
 %defattr(644,root,root,755)
