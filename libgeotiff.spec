@@ -1,12 +1,12 @@
 Summary:	GeoTIFF library
 Summary(pl.UTF-8):	Biblioteka GeoTIFF
 Name:		libgeotiff
-Version:	1.7.3
-Release:	4
+Version:	1.7.4
+Release:	1
 License:	MIT, partially Public Domain (see LICENSE)
 Group:		Libraries
 Source0:	http://download.osgeo.org/geotiff/libgeotiff/%{name}-%{version}.tar.gz
-# Source0-md5:	cdca346d3b01d40418f4894c4beef8e9
+# Source0-md5:	7806cc2c153b88eef63698d5edaa5913
 Patch0:		%{name}-opt.patch
 URL:		http://geotiff.osgeo.org/
 BuildRequires:	autoconf >= 2.59
@@ -91,15 +91,15 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/applygeo
 %attr(755,root,root) %{_bindir}/geotifcp
 %attr(755,root,root) %{_bindir}/listgeo
-%attr(755,root,root) %{_libdir}/libgeotiff.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgeotiff.so.5
+%{_libdir}/libgeotiff.so.*.*.*
+%ghost %{_libdir}/libgeotiff.so.5
 %{_mandir}/man1/applygeo.1*
 %{_mandir}/man1/geotifcp.1*
 %{_mandir}/man1/listgeo.1*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libgeotiff.so
+%{_libdir}/libgeotiff.so
 %{_includedir}/cpl_serv.h
 %{_includedir}/geo_*.h
 %{_includedir}/geokeys.h
